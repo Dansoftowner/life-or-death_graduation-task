@@ -1,0 +1,17 @@
+﻿<Window x:Class="LifeOrDeathGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LifeOrDeathGUI"
+        mc:Ignorable="d"
+        Title="Életjáték álláskészítő" Height="450" Width="800">
+    <Grid>
+        <Label Content="Mátrix [sor x oszlop]:&#xD;&#xA;::&#xD;&#xA;" HorizontalAlignment="Left" Margin="22,31,0,0" VerticalAlignment="Top" Width="175" Height="37" FontSize="16"/>
+        <ComboBox x:Name="RowCombo" HorizontalAlignment="Left" Margin="185,38,0,0" VerticalAlignment="Top" Width="52" Height="22"/>
+        <ComboBox x:Name="ColumnCombo" HorizontalAlignment="Left" Margin="259,37,0,0" VerticalAlignment="Top" Width="52" Height="23"/>
+        <Button x:Name="NewMatrixButton" Content="Üres mátrix létrehozása" HorizontalAlignment="Left" Margin="25,103,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="SaveButton" Content="Állás mentése" HorizontalAlignment="Left" Margin="209,103,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+    </Grid>
+</Window>

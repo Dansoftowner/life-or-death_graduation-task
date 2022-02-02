@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Eletjatek_szimulator.pdf = Eletjatek_szimulator.pdf
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeOrDeathGUI", "LifeOrDeathGUI\LifeOrDeathGUI.csproj", "{D965BC75-3A28-4797-ABC2-6B2ADA8DE844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{E1FE8240-8AAE-4B3B-90B9-9BAB160E0FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1FE8240-8AAE-4B3B-90B9-9BAB160E0FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1FE8240-8AAE-4B3B-90B9-9BAB160E0FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D965BC75-3A28-4797-ABC2-6B2ADA8DE844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D965BC75-3A28-4797-ABC2-6B2ADA8DE844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D965BC75-3A28-4797-ABC2-6B2ADA8DE844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D965BC75-3A28-4797-ABC2-6B2ADA8DE844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
