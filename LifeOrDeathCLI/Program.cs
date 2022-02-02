@@ -7,12 +7,11 @@ namespace LifeOrDeathCLI
         static void Main(string[] args)
         {
             var lod = new LifeOrDeathSimulation(10, 10);
-            while (true)
+            while (!Console.KeyAvailable)
             {
                 Console.SetCursorPosition(0, 0);
                 lod.Run();
             }
-            Console.ReadKey();
         }
     }
 }
