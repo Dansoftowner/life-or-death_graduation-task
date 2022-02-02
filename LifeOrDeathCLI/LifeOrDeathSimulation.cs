@@ -89,16 +89,18 @@ namespace LifeOrDeathCLI
 
         private int GetNeighboursCount(int row, int col)
         {
-            return new List<int?>() {
-                GetNeighbourSafely(row, col -1), // left
-                GetNeighbourSafely(row, col + 1), // right
-                GetNeighbourSafely(row -1, col), // up
-                GetNeighbourSafely(row + 1, col), // down
-                GetNeighbourSafely(row -1, col + 1), // up right
-                GetNeighbourSafely(row -1, col - 1), // up left
-                GetNeighbourSafely(row +1, col -1), // down left
-                GetNeighbourSafely(row +1, col +1) // down right
-            }.Count(it => it == 1);
+            var count = -Matrix[row, col];
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    var n = GetNeighbourSafely(row + i, col + j);
+                    if (n.HasValue)
+                        count += n.Value;
+                }
+            }
+
+            return count;
         }
 
         private int? GetNeighbourSafely(int row, int col)
