@@ -76,7 +76,7 @@ namespace LifeOrDeathGUI
 
         private void Save_Click(object sender, EventArgs args)
         {
-            string outputFile = $"Eletjatek_{RowCombo.SelectedValue}x{ColumnCombo.SelectedValue}.txt";
+            string outputFile = $"Eletjatek_{RowsCount}x{ColumnsCount}.txt";
 
             using(StreamWriter sw = new StreamWriter(outputFile))
             {
