@@ -16,13 +16,19 @@ namespace LifeOrDeathCLI
         private List<int> rowEdgeCases;
         private List<int> columnEdgeCases;
 
+        Dictionary<int, string> DisplayMappings = new Dictionary<int, string>()
+        {
+            {0, " "},
+            {1, "S"}
+        };
+
         public LifeOrDeathSimulation(int columnsCount, int rowsCount, Action<int[,]> initMatrix)
         {
             ColumnsCount = columnsCount;
             RowsCount = rowsCount;
             Matrix = new int[RowsCount + 2, ColumnsCount + 2];
-            rowEdgeCases = new List<int>() { 0, RowsCount - 1 };
-            columnEdgeCases = new List<int>() { 0, ColumnsCount - 1 };
+            rowEdgeCases = new List<int>() {0, RowsCount - 1};
+            columnEdgeCases = new List<int>() {0, ColumnsCount - 1};
             initMatrix(Matrix);
         }
 
@@ -41,6 +47,7 @@ namespace LifeOrDeathCLI
                     matrix[row, col] = random.Next(2);
                 }
             }
+
             matrix[0, 0] = 0;
             matrix[0, ColumnsCount - 1] = 0;
             matrix[RowsCount - 1, 0] = 0;
@@ -77,6 +84,7 @@ namespace LifeOrDeathCLI
                     }
                 }
             }
+
             Matrix = temp;
         }
 
@@ -89,16 +97,18 @@ namespace LifeOrDeathCLI
 
         private int GetNeighboursCount(int row, int col)
         {
-            return new List<int?>() {
-                GetNeighbourSafely(row, col -1), // left
-                GetNeighbourSafely(row, col + 1), // right
-                GetNeighbourSafely(row -1, col), // up
-                GetNeighbourSafely(row + 1, col), // down
-                GetNeighbourSafely(row -1, col + 1), // up right
-                GetNeighbourSafely(row -1, col - 1), // up left
-                GetNeighbourSafely(row +1, col -1), // down left
-                GetNeighbourSafely(row +1, col +1) // down right
-            }.Count(it => it == 1);
+            var count = -Matrix[row, col];
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    var n = GetNeighbourSafely(row + i, col + j);
+                    if (n.HasValue)
+                        count += n.Value;
+                }
+            }
+
+            return count;
         }
 
         private int? GetNeighbourSafely(int row, int col)
@@ -125,23 +135,13 @@ namespace LifeOrDeathCLI
 
         public override string ToString()
         {
-            Dictionary<int, string> mappings = new Dictionary<int, string>()
-            {
-                {0, " "},
-                {1, "S"}
-            };
-
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int row = 0; row < RowsCount; row++)
             {
                 for (int col = 0; col < ColumnsCount; col++)
-                    if (IsEdgeCase(row, col))
-                        sb.Append("X");
-                    else
-                        sb.Append(mappings[Matrix[row, col]]);
+                    sb.Append(IsEdgeCase(row, col) ? "X" : DisplayMappings[Matrix[row, col]]);
                 sb.AppendLine();
             }
-
             return sb.ToString();
         }
     }
